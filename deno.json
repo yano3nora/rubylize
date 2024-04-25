@@ -2,9 +2,7 @@
   "tasks": {
     "dev": "deno test -A --watch",
     "build": "deno run -A build.ts",
-    "link": "(cd npm && npm link)",
-    "publish:dry": "deno run -A publish.ts dry",
-    "publish:run": "deno run -A publish.ts run"
+    "link": "(cd npm && npm link)"
   },
   "test": {
     "exclude": [
