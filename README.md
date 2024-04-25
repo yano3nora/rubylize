@@ -4,7 +4,7 @@ rubylize
 
 # Installation
 ```sh
-$ deno install -n rubylize https://deno.land/x/rubylize@0.0.1/main.ts
+$ deno install -n rubylize -A https://deno.land/x/rubylize@v0.0.1/main.ts
 ```
 
 # Usage
