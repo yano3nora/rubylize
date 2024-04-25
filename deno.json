@@ -1,0 +1,29 @@
+{
+  "tasks": {
+    "dev": "deno test -A --watch",
+    "build": "deno run -A build.ts",
+    "link": "(cd npm && npm link)",
+    "publish:dry": "deno run -A publish.ts dry",
+    "publish:run": "deno run -A publish.ts run"
+  },
+  "test": {
+    "exclude": [
+      "npm/"
+    ]
+  },
+  "lint": {
+    "exclude": [
+      "npm/"
+    ]
+  },
+  "fmt": {
+    "exclude": [
+      "npm/",
+      "README.md"
+    ],
+    "options": {
+      "singleQuote": true,
+      "semiColons": false
+    }
+  }
+}
