@@ -1,6 +1,6 @@
 rubylize
 ===
-> https://deno.land/x/rubylize@v0.0.1
+> https://deno.land/x/rubylize
 
 # Installation
 ```sh
