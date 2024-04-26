@@ -8,9 +8,9 @@ export const rubylizer = async (input = '') => {
     tokens.forEach(token => {
       // 漢字のトークンだけにふりがなを振る
       if (
-        token.pos === '名詞' &&
-        token.pos_detail_1 === '一般' &&
-        token.word_type === 'KNOWN'
+        token.word_type === 'KNOWN' &&
+        token.reading &&
+        /[\u3400-\u9FFF\uF900-\uFAFF\u4E00-\u9FCC]/.test(token.surface_form)
       ) {
         const ruby = kata2hira(token.reading)
         output += `<ruby>${token.surface_form}<rt>${ruby}</rt></ruby>`
