@@ -2,9 +2,9 @@ rubylize
 ===
 > https://deno.land/x/rubylize
 
-# Installation
+# Installation & Update
 ```sh
-$ deno install -n rubylize -A https://deno.land/x/rubylize@${TAG}/main.ts
+$ deno install -f -n rubylize -A https://deno.land/x/rubylize/main.ts
 ```
 
 # Usage
