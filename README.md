@@ -6,7 +6,7 @@ rubylize
 
 ## Installation & Update
 ```sh
-$ deno install -f -n rubylize -A https://deno.land/x/rubylize/main.ts
+$ deno install -r -f -n rubylize -A https://deno.land/x/rubylize/main.ts
 ```
 
 ## Usage
