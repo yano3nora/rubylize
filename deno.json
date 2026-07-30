@@ -8,7 +8,7 @@
     "compile": "deno compile --allow-read --allow-env --output rubylize main.ts"
   },
   "fmt": {
-    "exclude": ["README.md"],
+    "exclude": ["README.md", "dist/"],
     "singleQuote": true,
     "semiColons": false
   },
