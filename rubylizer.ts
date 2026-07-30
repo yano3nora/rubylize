@@ -1,11 +1,11 @@
-import { tokenize } from 'npm:kuromojin@3.0.0'
+import { tokenize } from 'kuromojin'
 import { kata2hira } from './kata2hira.ts'
 
 export const rubylizer = async (input = '') => {
   let output = ''
 
-  await tokenize(input).then(tokens => {
-    tokens.forEach(token => {
+  await tokenize(input).then((tokens) => {
+    tokens.forEach((token) => {
       // 漢字のトークンだけにふりがなを振る
       if (
         token.word_type === 'KNOWN' &&

@@ -860,3 +860,7 @@ InitTestScene*.unity.meta
 InitTestScene*.unity
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,visualstudiocode,sublimetext,node,python,ruby,firebase,unity,csharp
+
+# compiled binary (deno task compile)
+/rubylize
+/rubylize.exe

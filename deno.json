@@ -1,27 +1,19 @@
 {
   "tasks": {
-    "dev": "deno test -A --watch",
-    "build": "deno run -A build.ts",
-    "link": "(cd npm && npm link)"
-  },
-  "test": {
-    "exclude": [
-      "npm/"
-    ]
-  },
-  "lint": {
-    "exclude": [
-      "npm/"
-    ]
+    "dev": "deno test --allow-read --allow-env --watch",
+    "check": "deno fmt --check && deno lint && deno check main.ts scripts/release.ts",
+    "test": "deno test --allow-read --allow-env",
+    "fmt": "deno fmt",
+    "lint": "deno lint",
+    "compile": "deno compile --allow-read --allow-env --output rubylize main.ts"
   },
   "fmt": {
-    "exclude": [
-      "npm/",
-      "README.md"
-    ],
-    "options": {
-      "singleQuote": true,
-      "semiColons": false
-    }
+    "exclude": ["README.md"],
+    "singleQuote": true,
+    "semiColons": false
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1",
+    "kuromojin": "npm:kuromojin@3.0.0"
   }
 }

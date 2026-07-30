@@ -1,0 +1,45 @@
+# goreleaser には compile / archive / checksum / GitHub Release 作成だけを任せる。
+# version bump・check/test・tag 付け・人間による publish ゲートは scripts/release.ts 側に残す。
+# gistan の構成を横展開したもの。builds セクションだけがプロジェクト固有
+# https://goreleaser.com/customization/builds/deno/
+version: 2
+
+project_name: rubylize
+
+builds:
+  - builder: deno
+    main: main.ts
+    binary: rubylize
+    # deno compile の permission flags。deno.json の compile task と同期させること
+    # (--allow-read: kuromoji 辞書読み込み / --allow-env: kuromojin の KUROMOJIN_DIC_PATH 参照)
+    flags:
+      - --allow-read
+      - --allow-env
+    targets:
+      - x86_64-unknown-linux-gnu
+      - aarch64-unknown-linux-gnu
+      - x86_64-apple-darwin
+      - aarch64-apple-darwin
+      - x86_64-pc-windows-msvc
+
+archives:
+  # asset 命名 (macos / x64) は gistan と揃える。mise `github:yano3nora/rubylize` の
+  # asset 解決を他プロジェクトと同じ形に保つため
+  - name_template: >-
+      {{ .ProjectName }}-v{{ .Version }}-{{ if eq .Os "darwin" }}macos{{ else }}{{ .Os }}{{ end }}-{{ if eq .Arch "amd64" }}x64{{ else }}{{ .Arch }}{{ end }}
+    formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    # archive にはバイナリのみ含める (README 等を同梱しない)
+    files:
+      - none*
+
+checksum:
+  algorithm: sha256
+  # asset ごとに個別の .sha256 を作る
+  split: true
+
+changelog:
+  # `gh release create --generate-notes` 相当。GitHub API で release notes を自動生成する
+  use: github-native
